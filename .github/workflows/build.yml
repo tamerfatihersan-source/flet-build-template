@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Kodlari Cek
-        # actions/checkout@v4.2.2
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        # actions/checkout@v4.1.1 (Saglam Surum)
+        uses: actions/checkout@b4ffde65f4633668828c08008afc50ecf648550e
       
       - name: Python Kurulumu
-        # actions/setup-python@v5.1.0
-        uses: actions/setup-python@0b93645e9fea784233e20a025f388836d936ef1a
+        # actions/setup-python@v4.8.0 (En kararli surum)
+        uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
         with:
           python-version: '3.11'
           
@@ -23,8 +23,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           
       - name: Flutter (Android Motoru) Kurulumu
-        # subosito/flutter-action@v2.16.0
-        uses: subosito/flutter-action@44ac965b96f18d999802d4280ad59b9e6a4e43fa
+        # subosito/flutter-action@v2.13.0 (Hatasiz surum)
+        uses: subosito/flutter-action@48cafc24713cca54bb03193a2634c47c846e7204
         with:
           flutter-version: '3.19.x'
           channel: 'stable'
@@ -34,8 +34,8 @@ jobs:
           flet build apk --verbose
           
       - name: APK Dosyasini Paketle ve Sun
-        # actions/upload-artifact@v4.3.3
-        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
+        # actions/upload-artifact@v4.3.1 (Guvenli surum)
+        uses: actions/upload-artifact@5d5d22a31266ced268874388b861e4b58bb5c2f3
         with:
           name: Mi17-Emergency-App
           path: build/**/*.apk
