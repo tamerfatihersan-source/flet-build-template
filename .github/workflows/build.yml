@@ -1,17 +1,19 @@
 name: Android Uygulamasi Yap
 
 on:
-  workflow_dispatch: # Bu satır butonu elle çalıştırmanı sağlar
+  workflow_dispatch:
 
 jobs:
   build-android:
     runs-on: ubuntu-latest
     steps:
       - name: Kodlari Cek
-        uses: actions/checkout@v4
+        # actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       
       - name: Python Kurulumu
-        uses: actions/setup-python@v4
+        # actions/setup-python@v5.1.0
+        uses: actions/setup-python@0b93645e9fea784233e20a025f388836d936ef1a
         with:
           python-version: '3.11'
           
@@ -21,7 +23,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           
       - name: Flutter (Android Motoru) Kurulumu
-        uses: subosito/flutter-action@v2
+        # subosito/flutter-action@v2.16.0
+        uses: subosito/flutter-action@44ac965b96f18d999802d4280ad59b9e6a4e43fa
         with:
           flutter-version: '3.19.x'
           channel: 'stable'
@@ -31,7 +34,8 @@ jobs:
           flet build apk --verbose
           
       - name: APK Dosyasini Paketle ve Sun
-        uses: actions/upload-artifact@v4
+        # actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808
         with:
           name: Mi17-Emergency-App
           path: build/**/*.apk
